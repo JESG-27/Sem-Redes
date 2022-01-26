@@ -11,7 +11,17 @@ int main()
     // llamar a las funciones y mandarles el archivo
     // ethernet(archivo)
 
-    ethernet();
+    FILE *archivo = fopen("Paquetes_Redes/ethernet_1.bin","rb+");
+
+    if (archivo == NULL)
+    {
+        cout << " Error: No se encontro el archivo" <<  endl;
+    }
+
+    else
+    {
+        ethernet(archivo);
+    }
     
     return 0;
 }

@@ -6,22 +6,12 @@
 
 using namespace std;
 
-void ethernet()
+void ethernet(FILE *archivo)
 {
     
     unsigned char palabra;
     size_t i;
-    string tp1, tp2;
 
-    FILE *archivo;
-
-    if ((archivo = fopen("Paquetes_Redes/ethernet_1.bin","rb+")) == NULL)
-    {
-        cout << " Error: No se encontro el archivo" <<  endl;
-    }
-
-    else
-    {
         cout << "Direccion MAC origen:" << endl;
         for(i=0;i<=5;i++)
         {
@@ -44,6 +34,7 @@ void ethernet()
         {
             palabra=fgetc(archivo);
             printf ("%02x:",palabra);
+            printf ("%c", palabra);
 
             // switch con las opciones de los diferentes tipos
             // 0800 IPv4
@@ -62,7 +53,6 @@ void ethernet()
         }
         cout << endl << endl;
 
-    }
     fclose(archivo);
 }
 

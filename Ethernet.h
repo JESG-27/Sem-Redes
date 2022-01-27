@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <stdio.h>
-//#include "ArregloDinamico.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -13,7 +13,7 @@ void ethernet(FILE *archivo)
     //ArregloDinamico<unsigned char> palabra;
     size_t i;
     
-    cout << "<<< ETHERNHET >>>" << endl << endl;
+    cout << setw(40) << "<<< ETHERNHET >>>" << endl << endl;
 
     cout << "Direccion MAC Destino:" << endl;
     for(i=0;i<=5;i++)

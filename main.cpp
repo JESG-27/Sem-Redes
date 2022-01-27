@@ -11,7 +11,7 @@ int main()
     // llamar a las funciones y mandarles el archivo
     // ethernet(archivo)
 
-    FILE *archivo = fopen("Paquetes_Redes/ethernet_2.bin","rb+");
+    FILE *archivo = fopen("Paquetes_Redes/ethernet_1.bin","rb+");
 
     if (archivo == NULL)
     {
@@ -23,5 +23,6 @@ int main()
         ethernet(archivo);
     }
 
+    system ("PAUSE");
     return 0;
 }

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include "Ethernet.h"
+#include "Ethernet_2.h"
 
 
 using namespace std;
@@ -11,7 +12,7 @@ int main()
     // llamar a las funciones y mandarles el archivo
     // ethernet(archivo)
 
-    FILE *archivo = fopen("Paquetes_Redes/ethernet_1.bin","rb+");
+    FILE *archivo = fopen("Paquetes_Redes/ethernet_2.bin","rb+");
 
     if (archivo == NULL)
     {
@@ -20,8 +21,9 @@ int main()
 
     else
     {
-        ethernet(archivo);
+        cout << endl << "Prueba" << endl;
+        ethernet_2(archivo);
     }
-    
+
     return 0;
 }

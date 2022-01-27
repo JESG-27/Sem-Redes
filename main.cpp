@@ -1,7 +1,6 @@
 #include <iostream>
 #include <stdio.h>
 #include "Ethernet.h"
-#include "Ethernet_2.h"
 
 
 using namespace std;
@@ -16,13 +15,12 @@ int main()
 
     if (archivo == NULL)
     {
-        cout << " Error: No se encontro el archivo" <<  endl;
+        cout << "Error: No se encontro el archivo" <<  endl;
     }
 
     else
     {
-        cout << endl << "Prueba" << endl;
-        ethernet_2(archivo);
+        ethernet(archivo);
     }
 
     return 0;

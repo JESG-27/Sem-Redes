@@ -7,11 +7,9 @@ using namespace std;
 
 int main()
 {
-    // Definir el archivo
-    // llamar a las funciones y mandarles el archivo
-    // ethernet(archivo)
-
-    FILE *archivo = fopen("Paquetes_Redes/ethernet_1.bin","rb+");
+    FILE *archivo = fopen("Paquetes_Redes/ethernet_ipv4_tcp.bin","rb+");
+    // La ruta y/o del archivo se debe de modificar según el archivo que se quiera leer.
+    // D:\CUCEI\4to_Semestre\SSPRCPC\Codigos\Paquetes_Redes\ethernet_ipv4_icmp_host_unreachable.bin
 
     if (archivo == NULL)
     {
@@ -24,5 +22,6 @@ int main()
     }
 
     system ("PAUSE");
+    system ("CLS");
     return 0;
 }

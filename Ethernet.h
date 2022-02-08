@@ -4,22 +4,23 @@
 #include <iostream>
 #include <stdio.h>
 #include <iomanip>
+#include "IPv4.h"
 
 using namespace std;
 
 void ethernet(FILE *archivo)
 {
     unsigned char palabra[70];
-    //ArregloDinamico<unsigned char> palabra;
-    size_t i;
-    
+    size_t i=0;
+
     cout << setw(40) << "<<< ETHERNHET >>>" << endl << endl;
 
     cout << "Direccion MAC Destino:" << endl;
     for(i=0;i<=5;i++)
     {
         palabra[i]=fgetc(archivo);
-        printf ("%02x:",palabra[i]);
+        //printf ("%02x:",palabra[i]);
+        cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)palabra[i] << ":";
     }
     cout << endl << endl;
 
@@ -27,7 +28,8 @@ void ethernet(FILE *archivo)
     for(i=6;i<=11;i++)
     {
         palabra[i]=fgetc(archivo);
-        printf ("%02x:",palabra[i]);
+        //printf ("%02x:",palabra[i]);
+        cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)palabra[i] << ":";
     }
     cout << endl << endl;
 
@@ -36,7 +38,8 @@ void ethernet(FILE *archivo)
     for(i=12;i<=13;i++)
     {
         palabra[i]=fgetc(archivo);
-        printf ("%02x:",palabra[i]);
+        //printf ("%02x:",palabra[i]);
+        cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)palabra[i] << ":";
     }
 
     // 0800 IPv4
@@ -45,9 +48,11 @@ void ethernet(FILE *archivo)
     // 86DD IPv6
     
     cout << endl;
+
     if (palabra[13] == 0)
     {
         cout << "IPv4" << endl;
+        IPv4(archivo);
     }
 
     else if (palabra[13] == 6)
@@ -68,13 +73,16 @@ void ethernet(FILE *archivo)
     cout << endl;
 
     cout << "Datos: " << endl;
-
+    fseek(archivo, 0, SEEK_SET);
+    fseek(archivo, 15-sizeof(unsigned char), SEEK_CUR);
     while (!feof(archivo))
     {
         i++;
         palabra[i]=fgetc(archivo);
-        printf ("%02x:",palabra[i]);
+        //printf ("%02x:",palabra[i]);
+        cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)palabra[i] << ":";
     }
+
     cout << endl << endl;
     fclose(archivo);
 }

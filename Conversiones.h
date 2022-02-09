@@ -146,7 +146,7 @@ int ASCII_DEC(unsigned char entrada)
     return decimal;
 }
 
-int ASCII_DEC(unsigned char entrada, int bandera)
+int ASCII_DEC(unsigned char entrada, int inicio, int final)
 {
     size_t i;
     int m[8], conv[8], top, bottom, decimal=0;
@@ -163,7 +163,7 @@ int ASCII_DEC(unsigned char entrada, int bandera)
         conv[bottom] = m[top];
     }
 
-    for (i=bandera;i<=7;i++)
+    for (i=inicio;i<=final;i++)
     {
         switch (i)
         {

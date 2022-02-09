@@ -50,7 +50,7 @@ void IPv4(FILE *archivo)
     {
         cout << conv[i];
     }
-    int tam = ASCII_DEC(datos[0], 4);
+    int tam = ASCII_DEC(datos[0], 4, 7);
     cout << dec << " " << tam;
     cout << endl;
 
@@ -152,7 +152,7 @@ void IPv4(FILE *archivo)
     }
     cout << " ";
     longitud = ASCII_DEC(datos[4], datos[5]);
-    cout << longitud << endl;
+    cout << dec << longitud << endl;
 
     ////////////////////////////////////////////// Flags ///
     conv = ASCII_BIN(datos[6]);

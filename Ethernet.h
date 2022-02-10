@@ -15,39 +15,33 @@ void ethernet(FILE *archivo)
 
     cout << setw(40) << "<<< ETHERNHET >>>" << endl << endl;
 
+    /////////////////////////////////////////// MAC Destino ////////////////////////////
     cout << "Direccion MAC Destino:" << endl;
     for(i=0;i<=5;i++)
     {
         palabra[i]=fgetc(archivo);
-        //printf ("%02x:",palabra[i]);
         cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)palabra[i] << ":";
     }
     cout << endl << endl;
 
+    /////////////////////////////////////////// MAC Origen ////////////////////////////
     cout << "Direccion MAC Origen:" << endl;
     for(i=6;i<=11;i++)
     {
         palabra[i]=fgetc(archivo);
-        //printf ("%02x:",palabra[i]);
         cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)palabra[i] << ":";
     }
     cout << endl << endl;
 
 
+    /////////////////////////////////////////// Tipo de Código ////////////////////////////
     cout << "Tipo de codigo:" << endl;
     for(i=12;i<=13;i++)
     {
         palabra[i]=fgetc(archivo);
-        //printf ("%02x:",palabra[i]);
         cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)palabra[i] << ":";
     }
-
-    // 0800 IPv4
-    // 0806 ARP
-    // 8035 RARP
-    // 86DD IPv6
-    
-    cout << endl;
+    cout << " - ";
 
     if (palabra[13] == 0)
     {
@@ -72,6 +66,7 @@ void ethernet(FILE *archivo)
 
     cout << endl;
 
+    /////////////////////////////////////////// Datos ////////////////////////////
     cout << "Datos: " << endl;
     fseek(archivo, 0, SEEK_SET);
     fseek(archivo, 15-sizeof(unsigned char), SEEK_CUR);
@@ -79,7 +74,6 @@ void ethernet(FILE *archivo)
     {
         i++;
         palabra[i]=fgetc(archivo);
-        //printf ("%02x:",palabra[i]);
         cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)palabra[i] << ":";
     }
 

@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "Ethernet.h"
 
-
 using namespace std;
 
 int main()

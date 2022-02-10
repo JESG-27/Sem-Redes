@@ -20,17 +20,18 @@ void IPv4(FILE *archivo)
     }
     cont=i;
 
+    cout << setw(40) << setfill(' ') << "<<< IPv4 >>>" << endl << endl;
     //////////////////////////////////////////////////////// VERSION //  Primer Byte primeros 4 bits
     conv = ASCII_BIN(datos[0]);
     
-    cout << "Version: ";
+    cout << "Version: " << setfill(' ') << setw(21);
     if (conv[2]==0)
     {
         /*for (i=0; i<4; i++)
         {
             cout << conv[i];
         }*/
-        cout << setfill(' ') << setw(21) << "IPv4" << endl << endl;
+        cout << "IPv4" << endl << endl;
     }
 
     else if(conv[2] == 1)
@@ -39,122 +40,122 @@ void IPv4(FILE *archivo)
         {
             cout << conv[i];
         }*/
-        cout << setfill(' ') << setw(21) << "IPv6" << endl << endl;
+        cout << "IPv6" << endl << endl;
     }
 
     ///////////////////////////////////////////////////// Tamaño /////
-    cout << "Tamano: ";
+    cout << "Tamano: " << setfill(' ') << setw(22);
     /*for (i=4; i<=7; i++)
     {
         cout << conv[i];
     }*/
     aux = ASCII_DEC(datos[0], 4, 7);
-    cout << setfill(' ') << setw(22) << dec << aux << endl << endl;
+    cout << dec << aux << " palabras" << endl << endl;
 
     ///////////////////////////////////////////////////// Tipo de Servicio ///
     conv = ASCII_BIN(datos[1]);
 
-    cout << "Desglose de Bits: ";
+    cout << "Prioridad: " << setfill(' ') << setw(19);
     if (conv[0]==0 && conv[1]==0 && conv[2]==0) //000
     {
-        cout << setfill(' ') << setw(12) << "De rutina" << endl;
+        cout << "De rutina" << endl;
     }
 
     else if (conv[0]==0 && conv[1]==0 && conv[2]==1) //001
     {
-        cout  << setfill(' ') << setw(12)<< "Prioritario" << endl;
+        cout  << "Prioritario" << endl;
     }
 
     else if (conv[0]==0 && conv[1]==1 && conv[2]==0) //010
     {
-        cout << setfill(' ') << setw(12) << "Inmediato" << endl;
+        cout << "Inmediato" << endl;
     }
 
     else if (conv[0]==0 && conv[1]==1 && conv[2]==1) //011
     {
-        cout << setfill(' ') << setw(12) << "Relampago" << endl;
+        cout << "Relampago" << endl;
     }
 
     else if (conv[0]==1 && conv[1]==0 && conv[2]==0) // 100
     {
-        cout << setfill(' ') << setw(12) << "Invalidacion Relampago" << endl;
+        cout << "Invalidacion Relampago" << endl;
     }
 
     else if (conv[0]==1 && conv[1]==0 && conv[2]==1) //101
     {
-        cout << setfill(' ') << setw(12) << "Proceso de llamada critica y de emergencia" << endl;
+        cout << "Proceso de llamada critica y de emergencia" << endl;
     }
 
     else if (conv[0]==1 && conv[1]==1 && conv[2]==0) //110
     {
-        cout << setfill(' ') << setw(12) << "Control de trabajo de internet" << endl;
+        cout << "Control de trabajo de internet" << endl;
     }
 
     else if (conv[0]==1 && conv[1]==1 && conv[2]==1) //111
     {
-        cout << setfill(' ') << setw(12) << "Control de red" << endl;
+        cout << "Control de red" << endl;
     }
     cout << endl;
 
-    cout << "Retardo: ";
+    cout << "Retardo: " << setfill(' ') << setw(21);
     if (conv[3]==0)
     {
-        cout << setfill(' ') << setw(21) << "Normal" << endl;
+        cout  << "Normal" << endl;
     }
     else if (conv[3]==1)
     {
-        cout << setfill(' ') << setw(21) << "Bajo" << endl;
+        cout << "Bajo" << endl;
     }
     cout << endl;
 
-    cout << "Rendimiento: ";
+    cout << "Rendimiento: " << setfill(' ') << setw(17);
     if (conv[4]==0)
     {
-        cout << setfill(' ') << setw(17) << "Normal" << endl;
+        cout << "Normal" << endl;
     }
     else if (conv[4]==1)
     {
-        cout << setfill(' ') << setw(17) << "Alto" << endl;
+        cout << "Alto" << endl;
     }
     cout << endl;
 
-    cout << "Fiabilidad: ";
+    cout << "Fiabilidad: " << setfill(' ') << setw(18);
     if (conv[4]==0)
     {
-        cout << setfill(' ') << setw(18) << "Normal" << endl;
+        cout << "Normal" << endl;
     }
     else if (conv[4]==1)
     {
-        cout << setfill(' ') << setw(18) << "Alta" << endl;
+        cout << "Alta" << endl;
     }
     cout << endl;
 
     //////////////////////////////////////////// Longitud Total //
     conv = ASCII_BIN(datos[2], datos[3]);
 
-    cout << "Longitud Total: ";
+    cout << "Longitud Total: " << setfill(' ') << setw(14) ;
     /*for (i=0; i<16; i++)
     {
         cout << conv[i];
     }*/
     aux = ASCII_DEC(datos[2], datos[3]);
-    cout << setfill(' ') << setw(14) << dec << aux << endl << endl;
+    cout << dec << aux << " Bytes" << endl << endl;
 
     ////////////////////////////////////////// Identificador ///
     conv = ASCII_BIN(datos[4], datos[5]);
 
-    cout << "Identificador: ";
+    cout << "Identificador: "<< setfill(' ') << setw(15) ;
     /*for (i=0; i<16; i++)
     {
         cout << conv[i];
     }*/
     aux = ASCII_DEC(datos[4], datos[5]);
-    cout << setfill(' ') << setw(15) << dec << aux << endl << endl;
+    cout << dec << aux << endl << endl;
 
     ////////////////////////////////////////////// Flags ///
     conv = ASCII_BIN(datos[6]);
 
-    cout << "Flags: ";
+    cout << "Flags: " << setfill(' ') << setw(23);
     for (i=0; i<=2; i++)
     {
         //cout << conv[i];
@@ -162,11 +163,11 @@ void IPv4(FILE *archivo)
         {
             if (conv[i]==0)
             {
-                cout << setfill(' ') << setw(23) << "Divisible" << " - ";
+                cout << "Divisible" << " - ";
             }
             else
             {
-                cout << setfill(' ') << setw(23) << "No divisible (DF)" << " - ";
+                cout << "No divisible (DF)" << " - ";
             }
         }
 
@@ -187,29 +188,29 @@ void IPv4(FILE *archivo)
     ////////////////////////// Posición de Fragmento //
     conv = ASCII_BIN(datos[6], datos[7]);
 
-    cout << "Posicion de Fragmento: ";
+    cout << "Posicion de Fragmento: " << setfill(' ') << setw(7);
     /*for (i=3; i<16; i++)
     {
         cout << conv[i];
     }*/
     aux = ASCII_DEC(datos[6], datos[7], 3, 15);
-    cout << setfill(' ') << setw(7) << dec << aux << endl << endl;
+    cout << dec << aux << endl << endl;
 
     ///////////////////////////////////////// Tiempo de Vida ///
     conv = ASCII_BIN(datos[8]);
 
-    cout << "Tiempo de Vida: ";
+    cout << "Tiempo de Vida: " << setfill(' ') << setw(14);
     /*for (i=0; i<8; i++)
     {
         cout << conv[i];
     }*/
     aux = ASCII_DEC(datos[8]);
-    cout << setfill(' ') << setw(14) << dec << aux << endl << endl;
+    cout << dec << aux << endl << endl;
 
     //////////////////////////////////////// Protocolo ////
     conv = ASCII_BIN(datos[9]);
 
-    cout << "Protocolo: ";
+    cout << "Protocolo: " << setfill(' ') << setw(19);
     /*for (i=0; i<8; i++)
     {
         cout << conv[i];
@@ -218,22 +219,22 @@ void IPv4(FILE *archivo)
     switch (aux)
     {
     case 1:
-        cout << setfill(' ') << setw(19) << "ICMPv4";
+        cout << "ICMPv4";
         break;
     case 6:
-        cout << setfill(' ') << setw(19) << "TCP";
+        cout << "TCP";
         break;
     case 17:
-        cout << setfill(' ') << setw(19) << "UDP";
+        cout << "UDP";
         break;
     case 58:
-        cout << setfill(' ') << setw(19) << "ICMPv6";
+        cout << "ICMPv6";
         break;
     case 118:
-        cout << setfill(' ') << setw(19) << "STP";
+        cout << "STP";
         break;
     case 121:
-        cout << setfill(' ') << setw(19) << "SMP";
+        cout << "SMP";
         break;
     
     default:
@@ -244,13 +245,13 @@ void IPv4(FILE *archivo)
     /////////////////////////////////// Head checksum  //////
     conv = ASCII_BIN(datos[10], datos[11]);
 
-    cout << "Checksum: ";
+    cout << "Checksum: " << setfill(' ') << setw(19);
     /*for (i=0; i<16; i++)
     {
         cout << conv[i];
     }*/
     aux = ASCII_DEC(datos[10], datos[11]);
-    cout << setfill(' ') << setw(19) << hex << "0x" << aux << endl << endl;
+    cout << hex << "0x" << aux << endl << endl;
     
 
     ////////////////////////////////// IP Origen /////

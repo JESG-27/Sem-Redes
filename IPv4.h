@@ -1,8 +1,11 @@
 #ifndef IPV4_H
 #define IPV4_H
+
 #include <iostream>
 #include <iomanip>
 #include "Conversiones.h"
+#include "ICMPv4.h"
+
 using namespace std;
 
 void IPv4(FILE *archivo)
@@ -23,7 +26,7 @@ void IPv4(FILE *archivo)
     cout << setw(40) << setfill(' ') << "<<< IPv4 >>>" << endl << endl;
     //////////////////////////////////////////////////////// VERSION //  Primer Byte primeros 4 bits
     conv = ASCII_BIN(datos[0]);
-    
+
     cout << "Version: " << setfill(' ') << setw(21);
     if (conv[2]==0)
     {
@@ -219,7 +222,16 @@ void IPv4(FILE *archivo)
     switch (aux)
     {
     case 1:
-        cout << "ICMPv4";
+        cout << "ICMPv4"<<endl;
+
+
+        ICMPv4(datos[20],datos[21]);
+        cout << "     Checksum: ";
+        cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)datos[22];
+        cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)datos[23]<<endl;
+////////        //checksum
+
+
         break;
     case 6:
         cout << "TCP";
@@ -236,7 +248,7 @@ void IPv4(FILE *archivo)
     case 121:
         cout << "SMP";
         break;
-    
+
     default:
         break;
     }
@@ -246,13 +258,10 @@ void IPv4(FILE *archivo)
     conv = ASCII_BIN(datos[10], datos[11]);
 
     cout << "Checksum: " << setfill(' ') << setw(19);
-    /*for (i=0; i<16; i++)
-    {
-        cout << conv[i];
-    }*/
+
     aux = ASCII_DEC(datos[10], datos[11]);
     cout << hex << "0x" << aux << endl << endl;
-    
+
 
     ////////////////////////////////// IP Origen /////
     cout << "IP Origen: ";

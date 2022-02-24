@@ -1,11 +1,9 @@
 #ifndef IPV4_H
 #define IPV4_H
-
 #include <iostream>
 #include <iomanip>
 #include "Conversiones.h"
-#include "ICMPv4.h"
-
+#include "Icmpv4.h"
 using namespace std;
 
 void IPv4(FILE *archivo)

@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <iomanip>
 #include "IPv4.h"
+#include "ARP_RARP.h"
 
 using namespace std;
 
@@ -52,11 +53,13 @@ void ethernet(FILE *archivo)
     else if (palabra[13] == 6)
     {
         cout << "ARP" << endl;
+        ARP(archivo);
     }
 
     else if (palabra[13] == 5)
     {
         cout << "RARP" << endl;
+        RARP(archivo);
     }
 
     else if (palabra[13] == 'D')

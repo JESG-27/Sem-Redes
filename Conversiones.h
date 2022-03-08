@@ -523,4 +523,23 @@ int ASCII_DEC(unsigned char prt1, unsigned char prt2, int inicio, int final)
     return decimal;
 }
 
+int BIN_DEC(char arreglo[])
+{
+    char temp[2];
+    int i,x,total=0,decimal[20];
+    int potencia[20]={1,2,4,8,16,32,64,128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288};
+
+    for(i=0;arreglo[i]!='\0';i++);
+    int limite=i;
+    i--;
+    for(x=0;x<limite;x++,i--)
+    {
+        temp[0]=arreglo[i];
+        decimal[x]=atoi(temp);
+        decimal[x]*=potencia[x];
+        total+=decimal[x];
+    }
+    return total;
+}
+
 #endif

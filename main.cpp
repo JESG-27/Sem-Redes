@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    FILE *archivo = fopen("Paquetes_Redes/ethernet_arp_request.bin","rb+");
+    FILE *archivo = fopen("Paquetes_Redes/ipv6_icmpv6_pong.bin","rb+");
     // La ruta y/o del archivo se debe de modificar según el archivo que se quiera leer.
 
     if (archivo == NULL)

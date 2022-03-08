@@ -6,6 +6,7 @@
 #include <iomanip>
 #include "IPv4.h"
 #include "ARP_RARP.h"
+#include "IPv6.h"
 
 using namespace std;
 
@@ -62,9 +63,10 @@ void ethernet(FILE *archivo)
         RARP(archivo);
     }
 
-    else if (palabra[13] == 'D')
+    else
     {
         cout << "IPv6" << endl;
+        IPv6(archivo);
     }
 
     cout << endl;

@@ -132,24 +132,15 @@ void IPv4(FILE *archivo)
     cout << endl;
 
     //////////////////////////////////////////// Longitud Total //
-    conv = ASCII_BIN(datos[2], datos[3]);
+
 
     cout << "Longitud Total: " << setfill(' ') << setw(14) ;
-    /*for (i=0; i<16; i++)
-    {
-        cout << conv[i];
-    }*/
     aux = ASCII_DEC(datos[2], datos[3]);
     cout << dec << aux << " Bytes" << endl << endl;
 
     ////////////////////////////////////////// Identificador ///
-    conv = ASCII_BIN(datos[4], datos[5]);
 
     cout << "Identificador: "<< setfill(' ') << setw(15) ;
-    /*for (i=0; i<16; i++)
-    {
-        cout << conv[i];
-    }*/
     aux = ASCII_DEC(datos[4], datos[5]);
     cout << dec << aux << endl << endl;
 
@@ -198,24 +189,14 @@ void IPv4(FILE *archivo)
     cout << dec << aux << endl << endl;
 
     ///////////////////////////////////////// Tiempo de Vida ///
-    conv = ASCII_BIN(datos[8]);
 
     cout << "Tiempo de Vida: " << setfill(' ') << setw(14);
-    /*for (i=0; i<8; i++)
-    {
-        cout << conv[i];
-    }*/
     aux = ASCII_DEC(datos[8]);
     cout << dec << aux << endl << endl;
 
     //////////////////////////////////////// Protocolo ////
-    conv = ASCII_BIN(datos[9]);
 
     cout << "Protocolo: " << setfill(' ') << setw(19);
-    /*for (i=0; i<8; i++)
-    {
-        cout << conv[i];
-    }*/
     aux = ASCII_DEC(datos[9]);
     switch (aux)
     {

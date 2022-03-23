@@ -4,6 +4,8 @@
 #include <iomanip>
 #include "Conversiones.h"
 #include "Icmpv6.h"
+#include "TCPv6.h"
+#include "UDPv6.h"
 
 using namespace std;
 
@@ -24,6 +26,7 @@ void IPv6(FILE *archivo)
     cont=i;
 
     cout << setw(40) << setfill(' ') << "<<< IPv6 >>>" << endl << endl;
+
     //////////////////////////////////////////////////////// VERSION //  Primer Byte primeros 4 bits
     conv = ASCII_BIN(datos[0]);
 
@@ -38,7 +41,7 @@ void IPv6(FILE *archivo)
         cout << "IPv6" << endl << endl;
     }
 
-    //////////////////////////////////////////////// Clase de Trafico ///////////// primeros 2 Bytes posición 4-11
+    //////////////////////////////////////////////// Clase de Trafico ///////////// primeros 2 Bytes posiciï¿½n 4-11
     conv = ASCII_BIN(datos[0], datos[1]);
 
     cout << "Prioridad: " << setfill(' ') << setw(19);
@@ -136,7 +139,7 @@ void IPv6(FILE *archivo)
     aux = BIN_DEC(arreglo);
     cout << "Etiqueta: " << setfill(' ') << setw(18)<< dec << aux << endl << endl;
 
-    ///////////////////////////////////////////////////// Tamaño de Datos ////////////////////
+    ///////////////////////////////////////////////////// TamaÃ±o de Datos ////////////////////
     cout << "Longitud Total: " << setfill(' ') << setw(10) ;
     aux = ASCII_DEC(datos[4], datos[5]);
     cout << dec << aux << " Bytes" << endl << endl;
@@ -152,9 +155,12 @@ void IPv6(FILE *archivo)
         break;
     case 6:
         cout << "TCP";
+        TCPv6(archivo);
+
         break;
     case 17:
         cout << "UDP";
+        UDPv6(archivo);
         break;
     case 58:
         cout << "ICMPv6";
@@ -183,7 +189,7 @@ void IPv6(FILE *archivo)
     //////// Direcciones IPv6 ///////////
     //// Origen ////
 
-        cout << "Direccion de origen : " << setfill(' ') << setw(14);
+    cout << "Direccion de origen : " << setfill(' ') << setw(14);
     for (i=8; i<24; i++)
     {
         cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)datos[i];
@@ -192,12 +198,10 @@ void IPv6(FILE *archivo)
             cout << ":";
         }
     }
-    cout<<endl;
-    cout<<endl;
 
+    cout<<endl<<endl;
 
-
-       cout << "Direccion de destino : " << setfill(' ') << setw(14);
+    cout << "Direccion de destino : " << setfill(' ') << setw(14);
     for (i=24; i<40; i++)
     {
         cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)datos[i];
@@ -207,9 +211,6 @@ void IPv6(FILE *archivo)
         }
     }
     cout<<endl;
-
 }
-
-
 
 #endif

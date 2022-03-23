@@ -77,7 +77,7 @@ void ARP(FILE *archivo){
        cout << "RARP" << endl;
    }
 
-   else if (datos[3] == 'DD')
+   else 
    {
        cout << "IPv6" << endl;
    }
@@ -92,7 +92,7 @@ void ARP(FILE *archivo){
     cout << "       Longitud direccon de protocolo: " << proto << " Bytes" << endl;
 
 
-    ////////////////////////////////////////////////// Código de operación
+    ////////////////////////////////////////////////// Cï¿½digo de operaciï¿½n
     aux = ASCII_DEC(datos[6], datos[7]);
     cout << "       Codigo de Operacion: ";
 
@@ -226,7 +226,7 @@ void RARP(FILE *archivo){
        cout << "RARP" << endl;
    }
 
-   else if (datos[3] == 'DD')
+   else 
    {
        cout << "IPv6" << endl;
    }
@@ -239,7 +239,7 @@ void RARP(FILE *archivo){
     proto = ASCII_DEC(datos[5]);
     cout << "       Longitud direccon de protocolo: " << proto << " Bytes" << endl;
 
-    // Código de operación
+    // Cï¿½digo de operaciï¿½n
     aux = ASCII_DEC(datos[6], datos[7]);
     cout << "       Codigo de Operacion: ";
 

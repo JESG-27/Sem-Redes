@@ -4,6 +4,8 @@
 #include <iomanip>
 #include "Conversiones.h"
 #include "Icmpv4.h"
+#include "TCP.h"
+#include "UDP.h"
 using namespace std;
 
 void IPv4(FILE *archivo)
@@ -28,28 +30,16 @@ void IPv4(FILE *archivo)
     cout << "Version: " << setfill(' ') << setw(21);
     if (conv[2]==0)
     {
-        /*for (i=0; i<4; i++)
-        {
-            cout << conv[i];
-        }*/
         cout << "IPv4" << endl << endl;
     }
 
     else if(conv[2] == 1)
     {
-        /*for (i=0; i<4; i++)
-        {
-            cout << conv[i];
-        }*/
         cout << "IPv6" << endl << endl;
     }
 
     ///////////////////////////////////////////////////// Tamaño /////
     cout << "Tamano: " << setfill(' ') << setw(22);
-    /*for (i=4; i<=7; i++)
-    {
-        cout << conv[i];
-    }*/
     aux = ASCII_DEC(datos[0], 4, 7);
     cout << dec << aux << " palabras" << endl << endl;
 
@@ -150,7 +140,6 @@ void IPv4(FILE *archivo)
     cout << "Flags: " << setfill(' ') << setw(23);
     for (i=0; i<=2; i++)
     {
-        //cout << conv[i];
         if (i==1)
         {
             if (conv[i]==0)
@@ -181,10 +170,6 @@ void IPv4(FILE *archivo)
     conv = ASCII_BIN(datos[6], datos[7]);
 
     cout << "Posicion de Fragmento: " << setfill(' ') << setw(7);
-    /*for (i=3; i<16; i++)
-    {
-        cout << conv[i];
-    }*/
     aux = ASCII_DEC(datos[6], datos[7], 3, 15);
     cout << dec << aux << endl << endl;
 
@@ -205,18 +190,22 @@ void IPv4(FILE *archivo)
 
 
         ICMPv4(datos[20],datos[21]);
+        ////////// checksum
         cout << "     Checksum: ";
         cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)datos[22];
         cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)datos[23]<<endl;
-////////        //checksum
 
 
         break;
     case 6:
         cout << "TCP";
+        TCP(archivo);
+
         break;
     case 17:
         cout << "UDP";
+        UDP(archivo);
+
         break;
     case 58:
         cout << "ICMPv6";
@@ -236,7 +225,7 @@ void IPv4(FILE *archivo)
     /////////////////////////////////// Head checksum  //////
     conv = ASCII_BIN(datos[10], datos[11]);
 
-    cout << "Checksum: " << setfill(' ') << setw(19);
+    cout << "Checksum: ";
 
     aux = ASCII_DEC(datos[10], datos[11]);
     cout << hex << "0x" << aux << endl << endl;
@@ -244,7 +233,6 @@ void IPv4(FILE *archivo)
 
     ////////////////////////////////// IP Origen /////
     cout << "IP Origen: ";
-    cout << setfill(' ') << setw(19);
     for (i=12; i<=15; i++)
     {
         aux = ASCII_DEC(datos[i]);
@@ -258,7 +246,6 @@ void IPv4(FILE *archivo)
 
     ////////////////////////////////// IP Destino /////
     cout << "IP Destino: ";
-    cout << setfill(' ') << setw(18);
     for (i=16; i<=19; i++)
     {
         aux = ASCII_DEC(datos[i]);

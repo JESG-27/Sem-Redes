@@ -79,7 +79,8 @@ void ethernet(FILE *archivo)
     {
         i++;
         palabra[i]=fgetc(archivo);
-        cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)palabra[i] << ":";
+        //cout << hex << uppercase << setfill('0') << setw(2) << (unsigned int)palabra[i] << ":";
+        printf ("%02x:",palabra[i]);
     }
 
     cout << endl << endl;

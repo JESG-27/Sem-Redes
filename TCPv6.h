@@ -3,7 +3,7 @@
 #include <iostream>
 #include <iomanip>
 #include "Conversiones.h"
-
+#include "DNS.h"
 
 using namespace std;
 
@@ -37,7 +37,7 @@ void TCPv6(FILE *archivo){
         cout << setw(15) << "       Puerto";
         cout << setw(10) << "Servicio";
         cout << setw(10) << "Protocolo"<<endl;
-        
+
         if(aux==20)
         {
             cout << setw(15) << "       20";
@@ -73,6 +73,7 @@ void TCPv6(FILE *archivo){
             cout << setw(15) << "       53";
             cout << setw(10) << "DNS";
             cout << setw(10) << "TCP/UDP"<<endl;
+            DNS(archivo,75);
         }
         else if(aux==67)
         {
@@ -152,7 +153,7 @@ void TCPv6(FILE *archivo){
         cout << setw(15) << "       Puerto";
         cout << setw(10) << "Servicio";
         cout << setw(10) << "Protocolo"<<endl;
-        
+
         if(aux==20)
         {
             cout << setw(15) << "       20";
@@ -188,6 +189,7 @@ void TCPv6(FILE *archivo){
             cout << setw(15) << "       53";
             cout << setw(10) << "DNS";
             cout << setw(10) << "TCP/UDP"<<endl;
+            DNS(archivo,75);
         }
         else if(aux==67)
         {

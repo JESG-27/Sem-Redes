@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    FILE *archivo = fopen("Paquetes_Redes/ethernet_ipv4_tcp_syn.bin","rb+");
+    FILE *archivo = fopen("Paquetes_Redes/ethernet_ipv4_udp_dns_1.bin","rb+");
     // La ruta y/o del archivo se debe de modificar según el archivo que se quiera leer.
 
     if (archivo == NULL)

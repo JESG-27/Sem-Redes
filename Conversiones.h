@@ -593,10 +593,10 @@ int ASCII_DEC(unsigned char prt1, unsigned char prt2,unsigned char prt3,unsigned
         conv[bottom+24] = m[top];
     }
 
-    for (i=0;i<32;i++)
+    /*for (i=0;i<32;i++)
     {
     cout<<conv[i];
-    }
+    }*/
 
 
     for (i=0;i<32;i++)
